@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="col-md-1">번호</th>
+            <th class="col-md-1">상품명</th>
+            <th class="col-md-1">이미지</th>
+            <th class="col-md-1">가격</th>
+            <th class="col-md-1">등록일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${productList}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.productName}"></td>
+            <td>
+                <div class="mb-3" th:if="${product.imageUrls != null}">
+<!--                    <label class="form-label">Images</label>-->
+                    <div th:each="imageUrl : ${product.imageUrls}">
+                        <img th:src="${imageUrl}" alt="Image" width="200px" height="200px">
+                    </div>
+                </div>
+            </td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${#temporals.format(product.createdDate,'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>상품 등록</title>
+</head>
+<body>
+<div class="container"  layout:fragment="content">
+    <form method="post" enctype="multipart/form-data">
+<!--        <form action="register.html" th:action method="post">-->
+        <div class="form-group">
+            <label class="form-label mt-4">상품등록</label>
+            <div class="form-floating mb-3">
+                <input type="text" name="productName" class="form-control" id="productName" required>
+                <label for="productName">상품명</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="price" class="form-control" id="price" required>
+                <label for="price">가격</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="file" name="files" class="form-control" id="files" multiple>
+                <label for="files">이미지 업로드</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+</div>
+</body>
+</html>
